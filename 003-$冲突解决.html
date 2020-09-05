@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$冲突解决</title>
+</head>
+<body>
+    
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //当自身定义了$时 如果下面使用 $ 会产生冲突 
+    var $ = function(){
+        console.log(123)
+    }
+</script>
+<script>
+    // console.log($)
+    // console.log(jQuery)
+
+    //释放$的使用权
+    // jQuery.noConflict()
+
+    var jq = jQuery.noConflict
+    console.log($)
+    console.log(jQuery)
+    console.log(jq)
+
+    
+</script>
+</html>

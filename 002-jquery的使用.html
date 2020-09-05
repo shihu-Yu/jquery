@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery的使用</title>
+</head>
+<body>
+    
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //方法1
+    jQuery(document).ready(function(){
+        console.log(123)
+    })
+    jQuery(document).ready(function(){
+        console.log(123)
+    })
+
+    //方法2
+    $(document).ready(function(){
+        console.log(456)
+    })
+    $(document).ready(function(){
+        console.log(456)
+    })
+
+    //方法3
+    $(function(){
+        console.log(0)
+    })
+    $(function(){
+        console.log(0)
+    })
+</script>
+</html>
