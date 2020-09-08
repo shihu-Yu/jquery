@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery的核心函数</title>
+</head>
+<body>
+    <div>box</div>
+    <div>box</div>
+    <div id="box">box</div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    var res = $(function(){
+        console.log('DOMContentLoaded...')//这行代码实在整个文档解析完之后才开始执行的
+    })
+    console.log(res)//输出结果 004-jQuery的核心函数.html:16 jQuery.fn.init [document, context: document]    DOMContentLoaded...
+
+    //参数是一个字符串时  
+
+    //字符串为选择器
+    var res1 = $('div')
+    console.log(res1)//输出结果 jQuery.fn.init [div#box, context: document, selector: "div"]
+
+    //字符串为html代码片段
+    var res2 = $('<h1>我是谁</h1>')
+    console.log(res2)// jQuery.fn.init [h1]  返回的是一个伪书组  
+    document.body.appendChild(res2[0])//通过用伪书组下标的方式 将res2插入到文本之中 
+
+    //参数是一个对象
+    var res3 = $({name:'李雷'})
+    console.log(res3)//jQuery.fn.init [{…}]  会把这个对象整体打印出来
+
+    //参数是一个DOM节点对象
+    var res4 = $(document.getElementById('box'))
+    console.log(res4)//jQuery.fn.init [div#box, context: div#box]
+
+    //参数是一个数组对象
+    var res4 = $([1,2,3,4])
+    console.log(res4)//jQuery.fn.init(4) [1, 2, 3, 4]  数组的每一个项目值将作为返回jQuery对象中的每一个项值
+
+    //参数是一个表示布尔假的值
+    $(function(){
+    console.log($(false));
+    console.log($(0));
+    console.log($(''));
+    console.log($(null));
+    console.log($(undefined));
+    console.log($(NaN));
+    })
+    //以上代码的输出结果是
+    // jQuery.fn.init {}
+    // jQuery.fn.init {}
+    // jQuery.fn.init {}
+    // jQuery.fn.init {}
+    // jQuery.fn.init {}
+    // jQuery.fn.init {}
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery对象</title>
+</head>
+<body>
+    <div>1</div>
+    <div id="box">2</div>
+    <div>3</div>
+
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //
+    var elem = document.querySelectorAll('div')
+    // elem.style.color = 'red'
+    console.log(elem)
+    //DOM对象转jQuery对象
+    var $elem = $(elem)
+    $elem.css({
+        color:'red'
+    })
+    console.log($elem)
+
+    //jQuery对象转DOM对象
+
+    //获取对应下标的DOM元素 
+    console.log($elem.get([2]))
+    
+    console.log($elem.get())
+    //获取对应下标的DOM元素
+    console.log($elem[0])
+    console.log($elem[3])
+</script>
+</html>
