@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取元素</title>
+    <style>
+        .box{
+            display: none;
+        }
+        #box{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div id="box">2</div>
+    <div class="box">3</div>
+    <div></div>
+    <div>
+        <p>4</p>
+    </div>
+
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    /*
+    //css选择器获取元素
+    console.log($('div')) //根据选择器选择元素
+    console.log($('#box'));
+    console.log($('.box'))
+    //索引选择器获取元素
+    console.log($('div:eq(0)'));
+    console.log($('div:eq(1)'));
+    console.log($('div:eq(-1)'));
+
+    //内容过滤器
+    console.log($('div:empty'))//选择的元素中没有文本内容和子元素的
+    console.log($('div:parent'))//选择的元素中有文本内容或者子元素的
+
+    console.log($('div:contains(2)'))//选择的元素中包含有指定内容的
+
+    console.log($('div:has(p)'))//选择的元素中有指定的子元素选择器的
+
+    */
+
+    //过滤方法
+    console.log($('div').eq(1))//选择索引对应的DOM元素
+    console.log($('div').eq(1).siblings())//jQuery对象中包含元素之外的兄弟元素
+
+    //可见性过滤
+    console.log($('div:hidden'))//输出结果是具有display:none 的jQuery对象 而visibility 和 opcity相对应的对象不会被输出
+    console.log($('div:visible'))//匹配所有可见元素
+
+
+    //查找
+    console.log($('.father  .son'))//后代选择器查找
+
+    console.log($('.father').find('son'))//查找jQuery对象中DOM元素的后代中符合选择器规则的元素
+
+</script>
+</html>

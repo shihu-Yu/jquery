@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery对象常见的方法</title>
+</head>
+<body>
+    <div>1</div>
+    <div id="box">2</div>
+    <div>3</div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+   var $elems = $('div')
+   console.log($elems)
+
+   //jQuery对象.index获取索引
+   var elem = document.getElementById('box')
+   console.log($elems.index(elem))//输出结果是  1  
+
+   //jQuery对象.each遍历对象中的DOM元素
+   $elems.each(function(index,value){
+       console.log(this)//这里的this是每次遍历到的DOM节点
+       console.log(index,value)
+   })
+
+   
+</script>
+</html>

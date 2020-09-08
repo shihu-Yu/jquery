@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素</title>
+</head>
+<body>
+    <input type="text">
+    <input type="checkbox">
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    var $elem = $('input')
+    console.log($elem)
+    /*//获取属性的值
+    console.log($elem.attr("type"))//只能获取到第一个元素的属性值
+    console.log($elem.prop("type"))//同上
+    */
+
+    /*//设置属性的值
+    $elem.attr("test","123")//可以设置所有的属性
+    $elem.attr("name","name")
+    console.log($elem.attr("test"))
+    */
+
+    /*
+    $elem.prop("test","123")//改行代码无效  prop不能设置自定义的属性
+    $elem.prop("name","name")
+    */
+
+    console.log($elem.attr("checked"))//undedined
+    console.log($elem.prop("checked"))//false
+    /*attr和prop的区别
+    属性节点的值具有true和false时(如checked,selected,disabled),如果没有添加该属性时,attr会返回undefined,prop返回true
+    因此,属性节点的值具有true和false时用prop,其他的用attr
+    */
+
+</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作代码与文本</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    var $elem = $('div')
+    /*
+    $elem.html("<h2>你是我的眼</h2>")//设置或者获取元素中的HTML,相当于innerHTML	
+    console.log($elem.html())//不传入参数就是获取元素中的html
+    */
+    $elem.text('大鱼的翅膀')//设置或者获取元素中的HTM,相当于innerText
+    console.log($elem.text())//获取文本
+</script>
+</html>

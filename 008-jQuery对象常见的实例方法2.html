@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery对象常见的方法</title>
+</head>
+<body>
+    <div data-key="val1">1</div>
+    <div id="box">2</div>
+    <div data-key="val1">3</div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    var $elems = $('div')
+    //jQuery对象.data设置获取数据
+    //console.log($elems.data('key'))//当只有key一个参数时是该jQuery对象对应DOM中存储的key对应的值 但是无论有几个值都只会读取第一个
+    
+    //当参数为两个时,为该jQuery对象对应的DOM中存储key-value键值对的数据
+    console.log($elems.data('key','val 2'))
+    console.log($elems.eq(1).data('key','val 2'))
+   //DOM元素添加数据可以用jQuery对象.data()方法,也可以在DOM节点上使用data-*属性添加
+   console.log($elems.data('key','val 2').data('key'))
+
+
+
+   //jQuery对象.is 检测是否有匹配元素 输出结果是布尔值
+   console.log($elems.is('div'))//true
+   console.log($elems.is('.box'))//false
+
+   console.log($elems.is('#box'))//true
+
+</script>
+</html>
