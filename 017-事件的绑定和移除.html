@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的绑定和移除</title>
+</head>
+<body>
+    <button class="btn">点击</button>
+    <button class="btn">点击</button>
+
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+
+    //方法一 部分事件jQuery没有实现,多次绑定的事件都不会覆盖
+    /*
+    $('button').click(function(){
+        console.log(123)
+    })
+    */
+
+    //方法二  可以写js中所有的事件,多次绑定的事件都不会覆盖
+    
+    //jQuery对象.on('事件名',function(){});绑定一个可以多次执行的事件处理函数,如: 
+    $('button').on('click',function(){
+        console.log(123)
+    })
+    function fn(){
+        console.log(456)
+    }
+    $('button').on('click',fn)
+    
+
+    /*
+    //jQuery对象.one('事件名',function(){});绑定一个一次性的事件处理函数,如:
+    $('.btn').one('click',function(){
+        console.log(111)
+    })
+    */
+
+    //jQuery对象.hover(鼠标移入时执行函数,鼠标移出时执行函数)
+    $('.btn').hover(function(){
+        console.log(33)
+    })
+
+    //移除所有事件
+    // $('.btn').off()//移除所有的事件
+
+    //$('.btn').off('click')//移除所有事件名对应的事件
+
+    $('.btn').off('click',fn) // 移除事件名对应的函数名的相关事件
+</script>
+</html>

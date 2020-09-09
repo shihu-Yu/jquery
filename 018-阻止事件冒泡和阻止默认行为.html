@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阻止事件冒泡和阻止默认行为</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .gf{
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+        }
+        .f{
+            width: 200px;
+            height: 200px;
+            background-color: chocolate;
+        }
+        .s{
+            width: 100px;
+            height: 100px;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <div class="gf">
+        <div class="f">
+            <div class="s"></div>
+        </div>
+    </div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+
+    //阻止冒泡 return false  ev.stopPropagation()    阻止冒泡 return false    ev.preventDefault
+    $('.gf').on('click',function(ev){
+        console.log('gf')
+        ev.preventDefault
+    })
+    $('.f').on('click',function(ev){
+        console.log('f')
+        ev.stopPropagation()
+    })
+    $('.s').on('click',function(){
+        console.log('s')
+        return false
+    })
+</script>
+</html>

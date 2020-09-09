@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作尺寸</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: chartreuse;
+            padding: 20px;
+            border: 30px solid #542;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+            padding: 20px;
+            border: 30px solid #542;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //设置元素的宽高
+    /*
+    console.log($('div').width())//只能获取到第一个元素的值
+    console.log($('div').height())
+
+    $('div').width(200)//传入的值可以是 数字200 也可以是 字符串 '200px' 或者时字符串 '200'
+    $('div').height(200)
+    */
+
+    //设置或获取元素的宽高,包含内边距
+    /*
+    console.log($('div').eq(1).innerWidth())//240 
+    console.log($('div').eq(1).innerHeight())//240
+    $('div').innerHeight('200') //设置的宽高包括内边距 可以给所有的元素设置宽高
+    $('div').innerWidth('200')
+    */
+
+    //设置或获取元素的宽高,包含边框和内边距
+    console.log($('div').outerWidth())//200 只能获取到第一个元素的宽高 而且是加上内边距和边框的
+    console.log($('div').outerHeight())
+    $('div').outerWidth(300)//传入值的形式和上面的一样  这个宽高包括内容的宽高加上内边距加上边框
+    $('div').outerHeight(300)
+
+</script>
+</html>

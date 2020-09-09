@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作位置</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            height: 3000px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: chartreuse;
+            
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+            
+        }
+        .father{
+            position: relative;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="father">
+        <div class="box2"></div>
+    </div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //jQuery对象.offset([对象])	不传参数时获取第一个元素相对于body的偏移量,传参时设置所有元素相对于body的偏移量
+    /*
+    console.log($('div').offset())//{top: 0, left: 0}  只能获取到第一个元素的值、
+    console.log($('.box2').offset())//{top: 100, left: 0}
+    $('div').offset({
+        left:200
+    })
+    */
+
+    //jQuery对象.position()	不传参数时获取第一个元素相对于父级定位元素的偏移量,传参时设置所有元素相对父级定位元素的偏移量
+
+    console.log($('div').position())
+
+    
+    //jQuery对象.scrollTop([val])	设置或者获取元素垂直滚动距离
+    console.log($('div').scroll())
+</script>
+</html>

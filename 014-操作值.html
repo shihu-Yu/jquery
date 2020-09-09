@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作值</title>
+</head>
+<body>
+    <input type="text" value="lilei">
+    <input type="text" value="hanhan">
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    console.log($('input').val())//获取值时只能获取到第一个元素的值
+
+    $('input').val('marry')//传入值设置值 可以给所有的元素设置该值
+</script>
+</html>
