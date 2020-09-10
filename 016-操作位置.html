@@ -11,6 +11,7 @@
         }
         body{
             height: 3000px;
+            width: 3000px;
         }
         .box1{
             width: 100px;
@@ -22,11 +23,12 @@
             width: 200px;
             height: 200px;
             background-color: cadetblue;
-            
+            position: absolute;
+            top: 100px;
+            left: 100px;
         }
         .father{
             position: relative;
-            
         }
     </style>
 </head>
@@ -47,12 +49,20 @@
     })
     */
 
-    //jQuery对象.position()	不传参数时获取第一个元素相对于父级定位元素的偏移量,传参时设置所有元素相对父级定位元素的偏移量
+    //jQuery对象.position()	//只能获取相对的偏移量 不能设置
 
-    console.log($('div').position())
+    //console.log($('.box2').position())
 
-    
+    /*
     //jQuery对象.scrollTop([val])	设置或者获取元素垂直滚动距离
-    console.log($('div').scroll())
+    console.log($(window).scrollTop())
+
+    $(window).scrollTop(1500)//设置元素的垂直滚动距离
+    console.log($(window).scrollTop())
+    */
+
+    //jQuery对象.scrollLeft([val])
+    console.log($(window).scrollLeft())
+    $(window).scrollLeft(1500)//设置元素的水平滚动距离
 </script>
 </html>

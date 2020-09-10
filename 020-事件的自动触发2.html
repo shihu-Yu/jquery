@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>事件的自动触发</title>
+    <title>事件的自动触发2</title>
 </head>
 <body>
-    
+    <form action="http://www.baidu.com">
+        <input type="text">
+        <input type="submit" value="提交">
+    </form>
 </body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $('[type="submit"]').on('click',function(){
+        console.log('submit...')
+    })
+    // $('[type="submit"]').trigger('click')//不会阻止事件的默认行为  会把表单提交
+    $('[type="submit"]').triggerHandler('click')//会阻止事件的默认行为  不会提交表单 而是直接在控制台打印submit..
+</script>
 </html>

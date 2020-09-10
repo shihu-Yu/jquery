@@ -6,6 +6,26 @@
     <title>事件的自动触发</title>
 </head>
 <body>
-    
+    <a href="http://www.baidu.com">
+        <span>去学习</span>        
+    </a>
 </body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $('body').on('click',function(){
+        console.log('body click')
+    })
+    $('a').on('click', function () {
+        console.log('a click');
+    })
+    $('span').trigger('click')
+    /*输出结果
+    a click
+    body click
+    页面发生跳转
+
+    因此这里可以使用时间代理来实现
+    
+    */
+</script>
 </html>
