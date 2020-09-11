@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax常见接封装</title>
+</head>
+<body>
+    <button>基本GET请求</button>
+    <button>POST请求</button>
+    <button>JSONP数据</button>
+    <button>JSONP请求</button>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    // 发送GET请求  $.get(url[,参数][,回调函数][,返回数据类型])
+    $('button').eq(0).on('click',function(){
+       $.get('/getData',{name:'tom',age:21},function(data,textStatus,jqXHR){
+        console.log(data);
+            console.log(textStatus);
+            console.log(jqXHR);
+       },'json')
+    })
+
+    //发送POST请求 $.post(url[,参数][,回调函数][,返回数据类型])
+    $('button').eq(1).on('click',function(){
+        $.post('/addData',JSON.stringify({name:'tom',age:21}),function(data,textStatus,jqXHR){
+        console.log(data);
+            console.log(textStatus);
+            console.log(jqXHR);
+       },'json')
+    })
+
+    //获取JSON数据 $.getJSON(url[,回调函数])
+    $('button').eq(2).on('click', function () {
+        //服务器端需要有一个data.json的json文件
+        $.getJSON('/data.json',function(data, textStatus, jqXHR){
+            console.log(data);
+            console.log(textStatus);
+            console.log(jqXHR);
+        })
+    })
+        //jsonp请求  $.getJSON(url?服务器端接收参数名称=?[,回调函数])
+        $('button').eq(3).on('click', function () {
+        
+        $.getJSON('http://127.0.0.1:3000?callback=?',function(data, textStatus, jqXHR){
+            console.log(data);
+            console.log(textStatus);
+            console.log(jqXHR);
+        })
+    })
+
+    
+</script>
+</html>

@@ -19,23 +19,19 @@
     </style>
 </head>
 <body>
-    <button id="btn1">开始动画</button>
-    <button id="btn2">停止动画</button>
     <div></div>
     <div></div>
 </body>
 <script src="./jQuery/jquery1.12.4.js"></script>
 <script>
-    $('#btn1').on('click',function(){
-        $('div').animate({
-            width:200
-        },1000).animate({
-            height:200
-        },1000).animate({
-            opacity:0.8
-        },1000)
-    })
-    
+    $('div').delay(1000).animate({width:200},1000);
+    $('div').animate({height:200},1000);
+    $('div').animate({opacity:0.5},1000);
+    /*
+    延迟动画只对后面的动画起作用 因此这个案例只对第一个动画有延迟，对后面的两个动画没有延迟
+
+    时长的单位是毫秒
+    */
     
 
 </script>

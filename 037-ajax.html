@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax接口</title>
+</head>
+<body>
+    <button>基本GET请求</button>
+    <button>POST请求</button>
+    <button>JSONP数据</button>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //基本使用
+    $('button').eq(0).on('click',function(){
+        $.ajax({
+            url:'http://127.0.0.1:3000/getData',//请求的地址
+            type:'GET',
+            data://"name:'tom' age:18" /发送到服务器的数据,query形式的键值对字符串,对象或者JSON,对象会被转换为query形式的键值对字符串
+                 {
+                name:'tom',
+                age:18
+            },
+            //data:JSON.stringify({name:'Tom',age:18}),//参数是json
+            // data:"name=Tom&age=18" //参数是query形式的键值对
+            contentType:'application/json',//请求的MIME类型
+            dataType:'json',//返回的数据类型 可以是xml json jsonp script text html,默认是text
+            jsonp:"callback",//jsonp时回调函数的名称
+            xhrFields:{withCredentials:true},//跨域请求是否携带cookie设置,true为携带
+            success:function(data,textStatus,jqXHR){//请求成功后的回调函数
+                console.log('----success----');
+                console.log(data)
+                console.log(textStatus)
+                console.log(jqXHR)
+            },
+            error:function(jqXHR,textStatus){//请求失败后的回调函数
+                console.log('----error----');
+                console.log(jqXHR)
+                console.log(textStatus)
+            },
+            complete:function(jqXHR,textStatus){//请求完成(无论成功和失败)后的回调函数
+                console.log('----complete----');
+                console.log(jqXHR)
+                console.log(textStatus)
+            },
+            timeout:3000,//设置请求超时的时间,单位为毫秒
+            statusCode:{404:function(){//设置不同状态码的回调函数
+                console.log('get stautsCode 404')
+                }
+            },
+            headers:{//设置自定义请求头
+                test:'test'
+            }
+        })
+    })
+
+    //POST请求
+    $('button').eq(1).on('click',function(){
+        $.ajax({
+            url:'/addData',
+            type:'POST',
+            data:JSON.stringify({
+                name:'李雷',
+                age:20
+            }),
+            contentType:'application/json',
+            dataType:'json',
+            success:function(data,textStatus,jqXHR){
+                console.log('----success----');
+                console.log(data)
+                console.log(textStatus)
+                console.log(jqXHR)
+            }  
+        })
+    })
+
+    //jsonp请求
+    $('button').eq(2).on('click',function(){
+        $.ajax({
+            url:'http://127.0.0.1:3001',
+            dataType:'jsonp',
+            jsonp:'callback',
+            success: function (data, textStatus, jqXHR) {
+                console.log('----success----');
+                console.log(data);
+                console.log(textStatus);
+                console.log(jqXHR);
+            },
+        })
+    })
+</script>
+</html>

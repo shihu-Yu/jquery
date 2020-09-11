@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除节点</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            border:1px solid darkslategray;
+        }
+    </style>
+</head>
+<body>
+    <button>remove删除节点</button>
+    <button>empty删除节点</button>
+    <button>detach删除节点</button>
+    <div>我是文本</div>
+    <div>
+        <span>我是span</span>
+    </div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $('div').on('click',function(){
+        console.log('div ....');
+    })
+    $('button').eq(0).on('click',function(){
+        var $elem = $('div').remove()
+        // console.log($elem) 返回的是jq删除的对象
+        $('body').append($elem)//使用remove 删除节点时 绑定的事件也会被删除 这里的click事件就被删除掉了
+    })
+    $('button').eq(1).on('click',function(){
+        // 清空jQuery对象中节点的内容   empty方法清除的值是里面的文本或者标签 
+        var $elem = $('div').empty()    
+    })
+    $('button').eq(2).on('click',function(){
+        //  3. 删除jQuery对象中的节点但保留事件
+        var $elem = $('div').detach()  
+        $('body').append($elem)  //删除之后会保留事件 因此这里$('div') 的 click 事件还会触发
+    })
+</script>
+</html>

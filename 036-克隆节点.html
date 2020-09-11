@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>克隆节点</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            border:1px solid darkslategray;
+        }
+    </style>
+</head>
+<body>
+    <button>不复制事件</button>
+    <button>复制事件</button>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    /*
+    复制节点
+    jQuery对象.clone(false|true)
+    说明
+
+    默认参数是false,不会复制事件
+
+    参数true会复制事件
+    */
+    $('div').on('click',function(){
+        console.log('clone...')
+    })
+    $('button').eq(0).on('click',function(){
+        var $elem = $('div').clone(false) //默认的为false  当输入fasle时 不能克隆事件
+        $('body').append($elem)
+    })
+    $('button').eq(1).on('click',function(){
+        var $elem = $('div').clone(true)//但参数为true 时 可以克隆事件 
+        $('body').append($elem)
+    })
+</script>
+</html>
