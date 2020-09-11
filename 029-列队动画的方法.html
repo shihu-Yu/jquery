@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列队动画的方法</title>
+    <style>
+        *{
+            padding:0 ;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+            margin-top: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button>开始动画</button>
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    /*这种写法是几个属性同时变化
+    $('button').on('click',function(){
+        
+        $('div').animate({
+            width:200,
+            height:200,
+            opacity:0.8
+        })
+    })    
+        */
+
+        //列队动画是指 上一个动画执行完之后再去执行下一个动画
+
+        //方法一  多个动画按调用的顺序执行
+    /*
+    $('button').on('click',function(){
+        $('div').animate({
+            width:200,
+        })
+        $('div').animate({
+            height:200
+        })
+        $('div').animate({
+            opacity:0.8
+        })
+    })   
+        */
+
+        
+    /*   
+    $('button').on('click',function(){
+        //方法二  在动画方法的回调中再执行动画,回调中的动画会等待前面的动画执行完毕
+        $('div').animate({
+            width:200
+        },function(){
+            $('div').animate({
+                height:200
+            },function(){
+                $('div').animate({
+                    opacity:0.8
+                })
+            }) 
+        })
+    })
+    */
+
+    //方法三 多个动画链式调用,后面的动画会等待前面的动画执行完毕  因为animate的返回结果是jQ对象 $('div') 因此可以再后面继续调用其它函数
+    $('button').on('click',function(){
+        $('div').animate({
+            width:200,
+        }).animate({
+            height:200
+        }).animate({
+            opacity:0.8
+        })
+    })
+</script>
+</html>

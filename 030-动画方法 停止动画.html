@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>停止动画</title>
+    <style>
+        *{
+            padding:0 ;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+            margin-top: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">开始动画</button>
+    <button id="btn2">停止动画</button>
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $('#btn1').on('click',function(){
+        $('div').animate({
+            width:200
+        },1000).animate({
+            height:200
+        },1000).animate({
+            opacity:0.8
+        },1000)
+    })
+
+    //如果不传参数,停止当前正在执行的动画,然后把后续的动画执行完毕
+    /*
+    $('#btn2').on('click',function(){
+        $('div').stop()
+    })
+    */
+    //第一个参数默认是false,表示不清空,如果是true,后续动画不执行
+    /*
+    $('#btn2').on('click',function(){
+        // $('div').stop(false)
+        $('div').stop(true)
+    })
+    */
+   
+    //第二个参数默认是false,表示停止在当前状态,如果是ture,则跳到正在执行动画的最后状态
+    $('#btn2').on('click',function(){
+        // $('div').stop(false,false)
+        // $('div').stop(false,true)
+        // $('div').stop(true,false)
+        $('div').stop(true,true)
+
+    })
+
+</script>
+</html>

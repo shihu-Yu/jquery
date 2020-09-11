@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义动画</title>
+    <style>
+        *{
+            padding:0 ;
+            margin: 0;
+        }
+        div{
+            width: 150px;
+            height: 150px;
+            background-color: cadetblue;
+            margin-top: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button>开始动画</button>
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $('button').on('click',function(){
+        /*
+        $('div').animate({
+        left:'400px',//400
+        width:300,
+        height:300
+        })
+        */
+       /*
+        $('div').animate({
+        left:'400px',//400
+        width: '+=100',
+        height: '-=100'
+        },1000)
+        */
+        $('div').animate({
+        left:'400px',//400
+        width: '+=100',//动画的属性对象可以使用累加累减动画
+        height: '-=100'//累减
+        },1000,function(){
+            console.log('animate...')//会在动画执行完之后 输出
+        })
+    })
+   /*
+   时长和回调函数都省略,方法会有默认的时长,因此也会有动画效果
+
+    如果只有回调函数,方法会有默认的时长,因此也会有动画效果
+
+    需要动画的属性对象可以使用累加累减动画
+
+    多个属性写在一起可以执行同步动画
+   */
+</script>
+</html>

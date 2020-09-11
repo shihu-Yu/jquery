@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卷入卷出和切换</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            background-color: cadetblue;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //卷入
+    $('button').eq(0).on('click',function(){
+        // $('div').slideDown()
+        /*
+        $('div').slideDown(function(){
+            console.log(123)
+        })
+        */
+        $('div').slideDown(1000,function(){
+            console.log(123)
+        })
+    })
+    //卷出
+    $('button').eq(1).on('click',function(){
+    //    $('div').slideUp()
+    /*
+       $('div').slideUp(function(){
+           console.log(456)
+       })
+    */
+        $('div').slideUp(1000,function(){
+            console.log(456)//会在动画执行完之后 输出
+        })
+    })
+    //切换
+    $('button').eq(2).on('click',function(){
+        // $('div').slideToggle()
+        /*
+        $('div').slideToggle(function(){
+            console.log(789)//会在动画执行完之后 输出
+        })
+        */
+        $('div').slideToggle(1000,function(){
+            console.log(789)//会在动画执行完之后 输出
+        })
+    })
+
+    /*
+    时长和回调函数都省略,方法会有默认的时长,因此也会有动画效果
+    只有时长也会有动画
+    只有回调函数,方法会有默认的时长,因此也会有动画效果
+
+    时长的单位是毫秒
+    */
+</script>
+
+</html>

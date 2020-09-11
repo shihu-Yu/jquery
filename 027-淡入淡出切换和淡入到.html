@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淡入淡出切换和淡入到</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            background-color: cadetblue;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <button>淡入到</button>
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //淡入
+    $('button').eq(0).on('click',function(){
+        // $('div').fadeIn()
+        // $('div').fadeIn(1000)
+        $('div').fadeIn(1000,function(){
+            console.log('fadeIn..')//会在动画执行完之后 输出
+        })
+    })
+    //淡出
+    $('button').eq(1).on('click',function(){
+        // $('div').fadeOut()
+        // $('div').fadeOut(1000)
+        $('div').fadeOut(1000,function(){
+            console.log('fadeOut...')//会在动画执行完之后 输出
+        })
+    })
+    //切换
+    $('button').eq(2).on('click',function(){
+    //    $('div').fadeToggle()
+    //    $('div').fadeToggle(1000)
+       $('div').fadeToggle(1000,function(){
+           console.log('fadeToggle...')//会在动画执行完之后 输出
+       })
+    })
+    //淡入到
+    $('button').eq(3).on('click',function(){
+    //    $('div').fadeTo(1000,0.8)
+       $('div').fadeTo(1000,0.8,function(){
+           console.log('fadeTo...')//会在动画执行完之后 输出
+       })
+    })
+    /*
+    淡入/淡出/切换时长和回调函数都省略,方法会有默认的时长,因此也会有动画效果
+
+    淡入/淡出/切换如果只有回调函数,方法会有默认的时长,因此也会有动画效果
+
+    时长的单位是毫秒
+
+    淡入到的时长和淡入到值不能省略,淡入到值取值范围是0-1
+    */
+</script>
+
+</html>
