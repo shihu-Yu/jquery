@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插件</title>
+</head>
+<body>
+    <button>测试</button>
+    <div>测试专用</div>
+    <div>测试专用</div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //方法一  $.fn.方法名 = function(options){}
+    /*
+    $.fn.setColor = function(options){//在jQuery对象的原型对象上增加方法。
+        var DEFAULTS = {color:'maroon'}
+        var options = $.extend({},DEFAULTS,options)
+        return this.each(function(){//返回的是jQuery对象
+            this.style.color = options.color
+        })
+    }
+    
+    $('button').on('click',function(){
+        $('div').setColor({color:'blue'})//当这里不传参数时  会默认为  DEFAULTS
+    })
+    */
+
+   //方法二 $.fn.extend({方法名:function(options){}})
+    $.fn.extend({
+        setColor:function(options){
+        var DEFAULTS = {color:'maroon'}
+        var options = $.extend({},DEFAULTS,options)
+        return this.each(function(){//返回的是jQuery对象
+            this.style.color = options.color
+        })
+    }
+})
+    $('button').on('click',function(){
+        $('div').setColor({color:'green'})
+    })
+</script>
+</html>

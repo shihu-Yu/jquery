@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jqXHR对象</title>
+</head>
+<body>
+    <button>请求数据</button>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $('button').on('click',function(){
+        $.ajax({
+            url:'http://127.0.0.1:3000/getData',
+            type:'GET',
+            data:{
+                name:'李雷',
+                age:20
+            }
+        })
+        //jqXHR对象.abort()终止请求
+
+        .abort()//终止请求之后下面的代码都不会再执行
+
+        //请求成功时执行
+        .done(function(data,textStatus,jqXHR){
+            console.log('----done----')
+            console.log(data);
+            console.log(textStatus);//返回success
+            console.log(jqXHR);
+        })
+        //请求失败时执行 
+        .fail(function(jqXHR,textStatus){
+            console.log('----fail----')
+            console.log(textStatus);//返回error
+            console.log(jqXHR);
+        })
+        //jqXHR对象.always(回调函数)	无论成功还是失败都执行
+        .always(function(arg1,arg2,arg3){
+            console.log('----always----')
+            console.log(arg1)
+            console.log(arg2)//请求失败时输出结果是 error        请求成功时输出结果和done的一样
+            console.log(arg3)//请求失败时输出结果是 Not Found      同上
+        }) 
+        
+    })
+    
+</script>
+</html>

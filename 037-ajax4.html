@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全局配置</title>
+</head>
+<body>
+    <button>请求数据</button>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    //通过静态方法$.ajaxSetup()给所有的ajax请求添配置,这个配置就是全局配置
+    $('button').on('click',function(){
+        $.ajaxSetup({
+            dataType: 'json',
+            xhrFields: { withCredentials: true },
+            headers: { test: 'test' }
+        })
+        $.ajax({
+            url:'http://127.0.0.1:3000/getData',
+            type:'GET',
+            data:{
+                name:'李雷',
+                age:20
+            }
+        })
+        $.ajax({
+            url:'http://127.0.0.1:3000/addData',
+            type:'POST',
+            data:JSON.stringify({
+                name:'李雷',
+                age:20,
+            })
+        })
+          
+        
+    })
+    
+</script>
+</html>

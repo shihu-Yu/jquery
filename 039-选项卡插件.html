@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡插件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 960px;
+            margin:50px auto;
+        }
+        li{
+            list-style: none;
+        }
+        .tabs{
+            display: flex;
+            flex-direction: row;
+            border-bottom: 1px solid #F9002B;
+            background-color: #ccc;
+        }
+        .tabs li{
+            cursor: pointer;
+            width: 100px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .tabs li:hover{
+            color:#F9002B;
+        }
+        .tabs li.active{
+            color: #fff;
+            background-color: #F9002B;
+        }
+        .contents li{
+            display: none;
+            line-height: 400px;
+            text-align: center;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="tabs">
+            <li class="active">商品介绍</li>
+            <li>规格与包装</li>
+            <li>售后保障</li>
+            <li>商品评价</li>
+        </ul>
+        <ul class="contents">
+            <li style="display: block;">商品介绍的内容</li>
+            <li>规格与包装的内容</li>
+            <li>售后保障的内容</li>
+            <li>商品评价的内容</li>
+        </ul>
+    </div>   
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $.fn.extend({
+        tab:function(options){
+            DEFAULTS = {
+                tabsSelector:'.tabs li',
+                contentsSelector:'.contents li',
+                activeClass:'active',
+                event:'click'
+            }
+            options = $.extend({},DEFAULTS,options)
+            return this.each(function(){//遍历'.wrap' 并且返回 返回结果时"tabs" 和"contents"两部分
+                // console.log(this)这里的this 指向"tabs" 和"contents"两部分
+                var $elem = $(this)
+                var $tabs = $elem.find(options.tabsSelector)
+                var $contents = $elem.find(options.contentsSelector)
+                
+                $tabs.on(options.event,function(){
+                    $(this).addClass(options.activeClass).siblings().removeClass(options.activeClass)
+                    var index = $(this).index()//获取下标索引
+                    $contents.hide().eq(index).show()
+                })
+        
+            })
+        }
+        
+    })
+    $('.wrap').tab({
+        // event:'mouseenter'
+    })
+</script>
+</html>

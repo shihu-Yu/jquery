@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽插件</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+            
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $.fn.extend({
+        Drag:function(){
+            $('div').css({
+                position:'absolute'
+            })
+            return this.each(function(){
+               var $elem = $(this)
+               $elem.on('mousedown',function(ev){//绑定事件获取距离
+                   var disX = ev.pageX - $elem.offset().left
+                   var disY = ev.pageY - $elem.offset().top
+                   $(document)
+                   .on('mousemove',function(ev){//绑定事件进行拖拽
+                        $elem.css({
+                            left:ev.pageX - disX,
+                            top:ev.pageY - disY
+                        })
+                   })
+                   .on('mouseup',function(){
+                       $(document).off()
+                   })
+               })
+            })   
+        }
+    })
+    $('div').Drag()
+</script>
+</html>
