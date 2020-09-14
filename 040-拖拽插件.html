@@ -23,7 +23,8 @@
 </body>
 <script src="./jQuery/jquery1.12.4.js"></script>
 <script>
-    $.fn.extend({
+    ;(function($){
+        $.fn.extend({
         Drag:function(){
             $('div').css({
                 position:'absolute'
@@ -47,6 +48,8 @@
             })   
         }
     })
+    })(jQuery)
+    
     $('div').Drag()
 </script>
 </html>

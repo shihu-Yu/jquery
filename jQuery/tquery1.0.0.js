@@ -11,16 +11,34 @@
             //布尔值是假的情况返回空的tQuery对象
             if(!selector){
                 return this
-            }else if(this.isFunction(selector)){
+            }
+            if(tQuery.isFunction(selector)){
+                this[0] = document
+                this.length = 1
                 document.addEventListener('DOMContentLoaded',function(){
                     selector()
+                   
                 })
+                return this
+            }else if(tQuery.isString(selector)){
+                console.log('str...')
             }
-        },
-        isFunction:function(str){
-            return typeof str === 'function'
+        }  
+    }
+    tQuery.extend = function(obj){
+        for(var key in obj){
+            this[key] = obj[key]
         }
     }
+    tQuery.extend({
+        isFunction:function(arg){
+            return typeof arg === 'function'  
+        },
+        isString:function(arg){
+            return typeof arg === 'string'
+        }
+    })
+    
     tQuery.fn.init.prototype = tQuery.fn;
     window.tQuery = window.$ = tQuery
 })(window);

@@ -61,7 +61,8 @@
 </body>
 <script src="./jQuery/jquery1.12.4.js"></script>
 <script>
-    $.fn.extend({
+     ;(function($){
+        $.fn.extend({
         tab:function(options){
             DEFAULTS = {
                 tabsSelector:'.tabs li',
@@ -86,6 +87,8 @@
         }
         
     })
+    })(jQuery)
+   
     $('.wrap').tab({
         // event:'mouseenter'
     })
